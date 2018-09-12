@@ -81,7 +81,7 @@ const clock = new Three.Clock();
 function aniamte () {
   requestAnimationFrame(aniamte);
 
-  var delta = clock.getDelta();
+  const delta = clock.getDelta();
   mixer.update(delta);
   controls.update(delta);
   stats.update();
