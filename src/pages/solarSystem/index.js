@@ -24,9 +24,7 @@ camera.position.set(-200, 50, 0);
 camera.lookAt(new Three.Vector3(0, 0, 0));
 scene.add(camera);
 
-const sunSkin = Three.ImageUtils.loadTexture(getImageStaticPath('/sunCore.jpg'), {}, () => {
-  renderer.render(scene.camera);
-});
+const sunSkin = new Three.TextureLoader().load(getImageStaticPath('/sunCore.jpg'));
 
 const sun = new Three.Mesh(
   new Three.SphereGeometry(12, 16, 16),
