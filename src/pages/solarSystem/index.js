@@ -32,7 +32,12 @@ scene.add(sun);
 [
   {name: 'Mercury', color: 'rgb(124, 131, 203)', distance: 20, volume: 2},
   {name: 'Venus', color: 'rgb(190, 138, 44)', distance: 30, volume: 4},
-  {name: 'Earth', color: 'rgb(46, 69, 119)', distance: 40, volume: 5}
+  {name: 'Earth', color: 'rgb(46, 69, 119)', distance: 40, volume: 5},
+  {name: 'Mars', color: 'rgb(210, 81, 16)', distance: 50, volume: 4},
+  {name: 'Jupiter', color: 'rgb(254, 208, 101)', distance: 70, volume: 9},
+  {name: 'Jupiter', color: 'rgb(210, 140, 39)', distance: 100, volume: 7},
+  {name: 'Uranus', color: 'rgb(49, 168, 218)', distance: 120, volume: 4},
+  {name: 'Neptune', color: 'rgb(84, 125, 204)', distance: 150, volume: 3}
 ].forEach((planet) => {
   const star = initPlanet(planet.name, planet.color, planet.distance, planet.volume);
   scene.add(star.mesh);
