@@ -3,12 +3,13 @@ import * as Three from 'three';
 /**
  * 初始化行星
  * @param {String} name - 行星
- * @param {Number} color - 颜色
+ * @param {Number|String} color - 颜色
  * @param {Number} distance - 与原点的距离
  * @param {Number} volume - 体积
+ * @param {Number} speed - 角速度
  * @returns {Three.Mesh}
  */
-function initPlanet (name, color, distance, volume) {
+function initPlanet (name, color, distance, volume, speed) {
   let mesh = new Three.Mesh(
     new Three.SphereGeometry(volume, 16, 16),
     new Three.MeshLambertMaterial({
@@ -25,7 +26,9 @@ function initPlanet (name, color, distance, volume) {
     name,
     distance,
     volume,
-    mesh
+    mesh,
+    speed,
+    angle: 0
   };
 }
 
