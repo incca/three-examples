@@ -112,6 +112,7 @@ let webpackConfig = {
     host: '127.0.0.1',
     before(app) {
       app.use('/static', express.static(path.join(__dirname, 'resource')));
+      app.use('/static/image', express.static(path.join(__dirname, 'src/image')));
     }
   } 
 };

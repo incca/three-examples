@@ -12,9 +12,7 @@ import * as Three from 'three';
 function initPlanet (name, color, distance, volume, speed) {
   let mesh = new Three.Mesh(
     new Three.SphereGeometry(volume, 16, 16),
-    new Three.MeshLambertMaterial({
-      emissive: color
-    })
+    new Three.MeshLambertMaterial({color})
   );
 
   mesh.position.z = -distance;

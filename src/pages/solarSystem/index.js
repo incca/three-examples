@@ -1,5 +1,6 @@
 import * as Three from 'three';
 import * as Stats from 'stats.js';
+import { getImageStaticPath } from 'src/common/js/utils';
 import initPlanet from './initPlanet';
 
 window.THREE = Three;
@@ -23,15 +24,25 @@ camera.position.set(-200, 50, 0);
 camera.lookAt(new Three.Vector3(0, 0, 0));
 scene.add(camera);
 
+const sunSkin = Three.ImageUtils.loadTexture(getImageStaticPath('/sunCore.jpg'), {}, () => {
+  renderer.render(scene.camera);
+});
+
 const sun = new Three.Mesh(
   new Three.SphereGeometry(12, 16, 16),
   new Three.MeshLambertMaterial({
-    color: 0xffff00,
-    emissive: 0xdd4422
+    // color: 0xffff00,
+    emissive: 0xdd4422,
+    map: sunSkin
   })
 );
 sun.name = 'Sun';
 scene.add(sun);
+
+const ambient = new Three.AmbientLight(0x999999);
+scene.add(ambient);
+const sunLight = new Three.PointLight(0xddddaa, 1.5, 500);
+scene.add(sunLight);
 
 const stars = [
   {name: 'Mercury', color: 'rgb(124, 131, 203)', distance: 20, volume: 2, speed: 0.02},
@@ -69,6 +80,8 @@ function update () {
   stats.update();
   controls.update(clock.getDelta());
   stars.forEach(moveStar);
+  sun.rotation.y += (0.001 * Math.PI);
+  sun.rotation.y %= (Math.PI * 2);
   renderer.render(scene, camera);
   requestAnimationFrame(update);
 }
